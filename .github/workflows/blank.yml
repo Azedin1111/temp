@@ -13,7 +13,7 @@ jobs:
       run: |
         sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
         sudo apt update
-        sudo apt-get install -y libdrm-dev libzstd-dev
+        sudo apt-get install -y libdrm-dev libzstd-dev zstd
         sudo apt build-dep mesa -y
         
     
