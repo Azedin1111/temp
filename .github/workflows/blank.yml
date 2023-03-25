@@ -14,12 +14,14 @@ jobs:
         sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
         sudo apt update
         sudo apt-get install -y libdrm-dev
-        sudo dpkg-query -L libdrm-dev
         sudo apt build-dep mesa -y
         
     
     - name: Execute build script
-      run: bash ./freedreno.sh
+      run: |
+        export LIBDRM_CFLAGS="-I/usr/include/libdrm/"
+        export LIBDRM_LIBS="-L/usr/lib/x86_64-linux-gnu/"
+        bash ./freedreno.sh
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
