@@ -1,10 +1,10 @@
-name: Build "turnip"
+name: Build "freedreno_kgsl"
 
 on:
   workflow_dispatch:
 
 jobs:
-  start_building_turnip:
+  start_building:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
@@ -23,4 +23,6 @@ jobs:
       with:
         name: Upload meson and ninja logs for debugging
         path: |
-          /home/runner/mesa_kgsl.zip
+          kgsl_workdir/ninja_log
+          kgsl_workdir/mesa-main/build-android-aarch64/meson-logs/meson-log.txt
+          kgsl_workdir/mesa_kgsl.zip
