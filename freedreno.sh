@@ -46,11 +46,11 @@ unzip "$ndkver"-linux.zip  &> /dev/null
 
 
 echo "Downloading mesa source (~30 MB) ..." $'\n'
-curl https://gitlab.freedesktop.org/Hazematman/mesa/-/archive/freedreno_kgsl/mesa-freedreno_kgsl.zip --output mesa-main.zip &> /dev/null
+curl https://gitlab.freedesktop.org/Hazematman/mesa/-/archive/freedreno_kgsl/mesa-freedreno_kgsl.zip --output mesa-freedreno_kgsl.zip &> /dev/null
 ###
 echo "Exracting mesa source to a folder ..." $'\n'
-unzip mesa-main.zip &> /dev/null
-cd mesa-main
+unzip mesa-freedreno_kgsl.zip &> /dev/null
+cd mesa-freedreno_kgsl
 
 
 
