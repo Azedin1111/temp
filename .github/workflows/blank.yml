@@ -13,19 +13,13 @@ jobs:
       run: |
         sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
         sudo apt update
-        sudo apt-get install -y libdrm-dev libzstd-dev zstd
         sudo apt build-dep mesa -y
-        sudo find / | grep zlib.h
         
     
     - name: Execute build script
       run: |
-        export LIBDRM_CFLAGS="-I/usr/include/libdrm/"
-        export LIBDRM_LIBS="-L/usr/lib/x86_64-linux-gnu/"
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig/"
-        echo $C_INCLUDE_PATH
-        echo $CPLUS_INCLUDE_PATH
-#       bash ./freedreno.sh
+        bash ./freedreno.sh
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
