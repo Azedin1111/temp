@@ -3,8 +3,7 @@ green='\033[0;32m'
 red='\033[0;31m'
 nocolor='\033[0m'
 deps="meson ninja patchelf unzip curl pip flex bison zip"
-workdir="$(pwd)/turnip_workdir"
-magiskdir="$workdir/turnip_module"
+workdir="$(pwd)/kgsl_workdir"
 ndkver="android-ndk-r25c"
 clear
 
@@ -47,7 +46,7 @@ unzip "$ndkver"-linux.zip  &> /dev/null
 
 
 echo "Downloading mesa source (~30 MB) ..." $'\n'
-curl https://gitlab.freedesktop.org/mesa/mesa/-/archive/main/mesa-main.zip --output mesa-main.zip &> /dev/null
+curl https://gitlab.freedesktop.org/Hazematman/mesa/-/archive/freedreno_kgsl/mesa-freedreno_kgsl.zip --output mesa-main.zip &> /dev/null
 ###
 echo "Exracting mesa source to a folder ..." $'\n'
 unzip mesa-main.zip &> /dev/null
@@ -76,13 +75,13 @@ EOF
 
 
 echo "Generating build files ..." $'\n'
-meson build-android-aarch64 --cross-file $workdir/mesa-main/android-aarch64 -Dlibdir=$HOME/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=31 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$HOME/mesa_kgsl -Db_lto=true &> $workdir/meson_log
+meson build-android-aarch64 --cross-file $workdir/mesa-main/android-aarch64 -Dlibdir=$workdir/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=31 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$workdir/mesa_kgsl -Db_lto=true &> $workdir/meson_log
 
 
 echo "Compiling build files ..." $'\n'
-ninja -C build-android-aarch64 &> $workdir/ninja_log
+ninja -C build-android-aarch64c install &> $workdir/ninja_log
 
 
 
 echo "Packing files in to zip archive ..." $'\n'
-zip -r $HOE/mesa_kgsl.zip $HOME/mesa_kgsl/* &> /dev/null
+zip -r $workdir/mesa_kgsl.zip $workdir/mesa_kgsl/* &> /dev/null
