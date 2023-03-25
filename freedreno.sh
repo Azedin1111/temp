@@ -80,7 +80,7 @@ meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aa
 
 
 echo "Compiling build files ..." $'\n'
-ninja -C build-android-aarch64c install &> $workdir/ninja_log
+ninja -C build-android-aarch64 install
 
 
 
