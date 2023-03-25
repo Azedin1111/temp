@@ -75,8 +75,7 @@ EOF
 
 
 echo "Generating build files ..." $'\n'
-meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aarch64 -Dlibdir=$workdir/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=31 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$workdir/mesa_kgsl -Db_lto=true &> $workdir/meson_log
-cat kgsl_workdir/mesa-main/build-android-aarch64/meson-logs/meson-log.txt
+meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aarch64 -Dlibdir=$workdir/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=31 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$workdir/mesa_kgsl -Db_lto=true
 
 
 
