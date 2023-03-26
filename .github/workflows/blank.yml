@@ -14,14 +14,14 @@ jobs:
         sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
         sudo apt update
         sudo apt build-dep mesa -y
-        sudo mkdir -p /usr/lib64
-        sudo ln -s /usr/lib/x86_64-linux-gnu /usr/lib64/x86_64-linux-gnu
-        export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu"
+
         
     
     - name: Execute build script
       run: |
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig/"
+        export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu"
+        export LIBRARY_PATH="/usr/lib/x86_64-linux-gnu"
         bash ./freedreno.sh
 
     - name: Upload a Build Artifact
