@@ -19,10 +19,6 @@ jobs:
     - name: Execute build script
       run: |
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig/"
-        LD_LIBRARY_PATH="$ndk:/usr/include:$LIBRARY_PATH:$LD_LIBRARY_PATH"
-        LIBRARY_PATH="$LD_LIBRARY_PATH"
-        LOCAL_C_INCLUDES="$LIBRARY_PATH"
-        LOCAL_CXX_INCLUDES="$LIBRARY_PATH"
         bash ./freedreno.sh
 
     - name: Upload a Build Artifact
@@ -30,6 +26,4 @@ jobs:
       with:
         name: Upload meson and ninja logs for debugging
         path: |
-          kgsl_workdir/ninja_log
-          kgsl_workdir/mesa-main/build-android-aarch64/meson-logs/meson-log.txt
           kgsl_workdir/mesa_kgsl.zip
