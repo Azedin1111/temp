@@ -13,8 +13,9 @@ jobs:
       run: |
         sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
         sudo apt update
-        sudo apt-get install libzstd1 zstd libzstd-dev
         sudo apt build-dep mesa -y
+        sudo ln -s /usr/lib/x86_64-linux-gnu/ /usr/lib64/x86_64-linux-gnu/
+        export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu"
         
     
     - name: Execute build script
