@@ -74,22 +74,8 @@ EOF
 
 
 
-echo "Creating second meson cross file ..." $'\n'
-cat <<EOF >"android-aarch64_2"
-[binaries]
-ar = '$ndk/llvm-ar'
-c = ['/usr/bin/gcc']
-cpp = ['/usr/bin/g++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
-c_ld = 'lld'
-cpp_ld = 'lld'
-strip = '$ndk/aarch64-linux-android-strip'
-pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=$workdir/$ndkver/pkgconfig', '/usr/bin/pkg-config']
-EOF
-
-
-
 echo "Generating build files ..." $'\n'
-meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aarch64 --native-file $workdir/mesa-freedreno_kgsl/android-aarch64_2 -Dlibdir=$workdir/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=29 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$workdir/mesa_kgsl -Db_lto=true
+meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aarch64 -Dlibdir=$workdir/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=29 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$workdir/mesa_kgsl -Db_lto=true
 
 
 
