@@ -78,8 +78,8 @@ echo "Creating second meson cross file ..." $'\n'
 cat <<EOF >"android-aarch64_2"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['/usr/bin/clang']
-cpp = ['/usr/bin/clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
+c = ['/usr/bin/gcc']
+cpp = ['/usr/bin/g++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
 c_ld = 'lld'
 cpp_ld = 'lld'
 strip = '$ndk/aarch64-linux-android-strip'
