@@ -59,15 +59,15 @@ ndk="$workdir/$ndkver/toolchains/llvm/prebuilt/linux-x86_64/bin"
 cat <<EOF >"android-aarch64"
 [binaries]
 ar = '$ndk/llvm-ar'
-c = ['ccache', '$ndk/aarch64-linux-android31-clang']
-cpp = ['ccache', '$ndk/aarch64-linux-android31-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
+c = ['ccache', '$ndk/aarch64-linux-android29-clang']
+cpp = ['ccache', '$ndk/aarch64-linux-android29-clang++', '-fno-exceptions', '-fno-unwind-tables', '-fno-asynchronous-unwind-tables', '-static-libstdc++']
 c_ld = 'lld'
 cpp_ld = 'lld'
 strip = '$ndk/aarch64-linux-android-strip'
-pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=NDKDIR/pkgconfig', '/usr/bin/pkg-config']
+pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=$workdir/$ndkver/pkgconfig', '/usr/bin/pkg-config']
 [host_machine]
 system = 'android'
-cpu_family = 'aarch64'
+cpu_family = 'arm'
 cpu = 'armv8'
 endian = 'little'
 EOF
@@ -75,7 +75,7 @@ EOF
 
 
 echo "Generating build files ..." $'\n'
-meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aarch64 -Dlibdir=$workdir/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=31 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$workdir/mesa_kgsl -Db_lto=true
+meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aarch64 -Dlibdir=$workdir/mesa_kgsl -Dbuildtype=release -Dplatforms=android -Dplatform-sdk-version=29 -Dandroid-stub=true -Dgallium-drivers=freedreno -Dvulkan-drivers= -Dfreedreno-kmds=kgsl -Degl=enabled -Ddri-search-path="/vendor/lib64/egl" --prefix=$workdir/mesa_kgsl -Db_lto=true
 
 
 
