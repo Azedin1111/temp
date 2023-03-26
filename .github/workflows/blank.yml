@@ -13,6 +13,7 @@ jobs:
       run: |
         sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
         sudo apt update
+        sudo apt-get install libzstd1 zstd libzstd-dev
         sudo apt build-dep mesa -y
         
     
