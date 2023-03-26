@@ -15,7 +15,7 @@ jobs:
         sudo apt update
         sudo apt build-dep mesa -y
         sudo mkdir -p /usr/lib64
-        sudo ln -s /usr/lib/x86_64-linux-gnu/ /usr/lib64/x86_64-linux-gnu/
+        sudo ln -s /usr/lib/x86_64-linux-gnu /usr/lib64/x86_64-linux-gnu
         export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu"
         
     
