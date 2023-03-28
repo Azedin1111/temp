@@ -1,0 +1,10 @@
+prefix=/home/runner/work/temp/temp/libdrm
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: libdrm
+Description: Userspace interface to kernel DRM services
+Version: 2.4.115
+Libs: -L${libdir} -ldrm
+Libs.private: -lm
+Cflags: -I${includedir} -I${includedir}/libdrm
