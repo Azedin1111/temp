@@ -79,6 +79,7 @@ meson build-android-aarch64 --cross-file $workdir/mesa-freedreno_kgsl/android-aa
 # cp $workdir/../intro-dependencies.json $workdir/mesa-freedreno_kgsl/build-android-aarch64/meson-info/intro-dependencies.json
 cp $workdir/../build.ninja $workdir/mesa-freedreno_kgsl/build-android-aarch64/build.ninja
 # grep -Ril "\-zstd" ./
+find $workdir | grep "libz.so"
 
 
 
