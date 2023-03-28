@@ -27,4 +27,9 @@ jobs:
       with:
         name: Upload meson and ninja logs for debugging
         path: |
-          kgsl_workdir/mesa_kgsl.zip
+          kgsl_workdir/mesa-freedreno_kgsl/build-android-aarch64/meson-info/intro-dependencies.json
+          kgsl_workdir/mesa-freedreno_kgsl/build-android-aarch64/build.ninja
+          kgsl_workdir/mesa-freedreno_kgsl/build-android-aarch64/meson-logs/meson-log.txt
+          kgsl_workdir/mesa-freedreno_kgsl/build-android-aarch64/meson-private/build.dat
+          kgsl_workdir/mesa-freedreno_kgsl/build-android-aarch64/meson-private/coredata.dat
+#         kgsl_workdir/mesa_kgsl.zip
