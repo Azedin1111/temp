@@ -80,10 +80,10 @@ grep -Ril "\-lzstd" ./build-android-aarch64
 
 
 
-echo "Compiling build files ..." $'\n'
-ninja -C build-android-aarch64 install
+# echo "Compiling build files ..." $'\n'
+# ninja -C build-android-aarch64 install
 
 
 
-echo "Packing files in to zip archive ..." $'\n'
-zip -r $workdir/mesa_kgsl.zip $workdir/mesa_kgsl/* &> /dev/null
+# echo "Packing files in to zip archive ..." $'\n'
+# zip -r $workdir/mesa_kgsl.zip $workdir/mesa_kgsl/* &> /dev/null
